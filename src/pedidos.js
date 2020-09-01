@@ -8,7 +8,7 @@ module.exports = class Pedidos {
 
   // Recebe um objeto pedido e retorna o pedido cadastrado.
   async add(orderObject, notafiscal = false) {
-    let orderXML = xmlbuilder.create(order).toString();
+    let orderXML = xmlbuilder.create(orderObject).toString();
     let params = {
       xml: orderXML,
     };
