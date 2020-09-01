@@ -22,16 +22,41 @@ class Bling {
     this.pedidosCompra = new PedidosCompra(this);
   }
 
-  request(options) {
+  // Esse bloco executa a requisição ao servidor do Bling.
+  request(config, itensLimit, instance = this) {
     return new Promise((resolve, reject) => {
       this.axiosInstance
-        .request(options)
-        .then(function (response) {
+        .request(config)
+        .then(async function (response) {
           let retorno = response.data.retorno;
           if (retorno.erros) {
             reject(new Error(retorno.erros[0].erro.msg));
           }
-          resolve(retorno);
+          // Implementar: paginação das chamadas com retorno acima de 100 itens.
+          let objectKey = Object.keys(retorno)[0]; // Chave da chamada
+          let itensArray = retorno[objectKey]; // Itens retornados
+          // Adicionar o número da página
+          // Verifica se ainda deve mudar de página
+          if (
+            itensLimit > itensArray.length &&
+            retorno[objectKey].length == 100
+          ) {
+            let url = response.config.url.split('/'); // Quebra a url
+            let page = url[1].split('=')[1]; // Número da página atual
+            let newConfig = response.config; // Captura a configuração do request do Axios
+            newConfig.url = `${url[0]}/page=${++page}/${url[2]}/`; // Prepara a url da próxima página
+
+            let novoRetorno = await instance.request(
+              newConfig,
+              itensLimit - 100
+            ); // solicita e retorna a próxima página
+            retorno[objectKey] = retorno[objectKey].concat(
+              novoRetorno[objectKey]
+            ); // Unificar os Arrays
+            resolve(retorno); // Retorna o array na promise
+          } else {
+            resolve(retorno); // Retorna esse quando não tiver mais páginas
+          }
         })
         .catch(function (error) {
           reject(new Error(error.message));

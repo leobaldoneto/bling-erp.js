@@ -44,7 +44,7 @@ module.exports = class Pedidos {
       - adicionar parametro para limitar o número de pedidos que deve ser retornado.
       - padronizar os filtros em objetos
   */
-  async getAll(filters = '') {
+  async getAll(filters = '', itensLimit = 100) {
     let params = {};
 
     if (filters !== '') {
@@ -53,11 +53,11 @@ module.exports = class Pedidos {
 
     let config = {
       method: 'get',
-      url: 'pedidos/json/',
+      url: 'pedidos/page=1/json/',
       params,
     };
 
-    return this.bling.request(config);
+    return this.bling.request(config, itensLimit);
   }
 
   /*  Retorna pedido através do id do pedido.
