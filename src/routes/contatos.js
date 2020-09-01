@@ -1,13 +1,6 @@
 'use strict';
 const xmlbuilder = require('xmlbuilder2');
 
-/*
-add - testar
-update - testar
-getall - testar
-getbyid - testar
-*/
-
 module.exports = class Pedidos {
   constructor(client) {
     this.bling = client;
