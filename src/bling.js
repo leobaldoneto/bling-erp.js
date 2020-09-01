@@ -1,10 +1,10 @@
 'use strict';
 const axios = require('axios');
 
-const Pedidos = require('./pedidos');
-const Produtos = require('./produtos');
-const Contatos = require('./contatos');
-const PedidosCompra = require('./pedidos-compra');
+const Pedidos = require('./routes/pedidos');
+const Produtos = require('./routes/produtos');
+const Contatos = require('./routes/contatos');
+const PedidosCompra = require('./routes/pedidos-compra');
 
 class Bling {
   constructor(...args) {
@@ -19,6 +19,7 @@ class Bling {
     this.pedidos = new Pedidos(this);
     this.produtos = new Produtos(this);
     this.contatos = new Contatos(this);
+    this.pedidosCompra = new PedidosCompra(this);
   }
 
   request(options) {
