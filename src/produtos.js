@@ -2,11 +2,11 @@
 const xmlbuilder = require('xmlbuilder2');
 
 /*
-add - testar
-update - testar
-delete - testar
-getall - testar
-getbysku - testar
+add - ok
+update - ok
+delete - ok
+getall - ok
+getbysku - ok
 getbyprovidersku 
 */
 
