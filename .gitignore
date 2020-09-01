@@ -1,3 +1,7 @@
+# Lib Configuration
+tests.js
+.vscode
+
 # Logs
 logs
 *.log

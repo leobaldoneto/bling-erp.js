@@ -1,0 +1,30 @@
+{
+  "name": "bling-erp.js",
+  "version": "0.1.0",
+  "description": "Biblioteca não oficial para interagir com a API do Bling ERP.",
+  "main": "src/bling.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leobaldoneto/bling-erp.js.git"
+  },
+  "keywords": [
+    "bling",
+    "erp",
+    "blingerp",
+    "api",
+    "node"
+  ],
+  "author": "Leobaldo Alcantara Neto",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/leobaldoneto/bling-erp.js/issues"
+  },
+  "homepage": "https://github.com/leobaldoneto/bling-erp.js#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "xmlbuilder2": "^2.3.1"
+  }
+}
