@@ -1,5 +1,5 @@
 # Lib Configuration
-tests.js
+tests-*.js
 .vscode
 
 # Logs

@@ -3,6 +3,7 @@ const axios = require('axios');
 
 const Pedidos = require('./pedidos');
 const Produtos = require('./produtos');
+const Contatos = require('./contatos');
 
 class Bling {
   constructor(...args) {
@@ -16,6 +17,7 @@ class Bling {
 
     this.pedidos = new Pedidos(this);
     this.produtos = new Produtos(this);
+    this.contatos = new Contatos(this);
   }
 
   request(options) {
