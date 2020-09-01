@@ -23,7 +23,7 @@ class Bling {
   }
 
   // Esse bloco executa a requisição ao servidor do Bling.
-  request(config, itensLimit, instance = this) {
+  request(config, itensLimit = 100, instance = this) {
     return new Promise((resolve, reject) => {
       this.axiosInstance
         .request(config)
@@ -54,6 +54,9 @@ class Bling {
               novoRetorno[objectKey]
             ); // Unificar os Arrays
             resolve(retorno); // Retorna o array na promise
+          } else if (itensLimit !== 100) {
+            retorno[objectKey] = retorno[objectKey].splice(0, itensLimit);
+            resolve(retorno);
           } else {
             resolve(retorno); // Retorna esse quando não tiver mais páginas
           }
