@@ -2,6 +2,7 @@
 const axios = require('axios');
 
 const Pedidos = require('./pedidos');
+const Produtos = require('./produtos');
 
 class Bling {
   constructor(...args) {
@@ -14,6 +15,7 @@ class Bling {
     });
 
     this.pedidos = new Pedidos(this);
+    this.produtos = new Produtos(this);
   }
 
   request(options) {
