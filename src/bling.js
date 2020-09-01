@@ -4,6 +4,7 @@ const axios = require('axios');
 const Pedidos = require('./pedidos');
 const Produtos = require('./produtos');
 const Contatos = require('./contatos');
+const PedidosCompra = require('./pedidos-compra');
 
 class Bling {
   constructor(...args) {
