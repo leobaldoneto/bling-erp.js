@@ -5,6 +5,7 @@ const Pedidos = require('./routes/pedidos');
 const Produtos = require('./routes/produtos');
 const Contatos = require('./routes/contatos');
 const PedidosCompra = require('./routes/pedidos-compra');
+const Categorias = require('./routes/categorias');
 
 class Bling {
   constructor(...args) {
@@ -20,6 +21,7 @@ class Bling {
     this.produtos = new Produtos(this);
     this.contatos = new Contatos(this);
     this.pedidosCompra = new PedidosCompra(this);
+    this.categorias = new Categorias(this)
   }
 
   // Esse bloco executa a requisição ao servidor do Bling.
