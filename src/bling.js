@@ -32,6 +32,9 @@ class Bling {
         .then(async function (response) {
           let retorno = response.data.retorno;
           if (retorno.erros) {
+            if (retorno.erros[0].erro.cod == 14){
+              resolve([]); // retorna vazio quando não encontrar outra página.
+            }
             reject(new Error(retorno.erros[0].erro.msg));
           }
           // Implementar: paginação das chamadas com retorno acima de 100 itens.
@@ -52,9 +55,10 @@ class Bling {
               newConfig,
               itensLimit - 100
             ); // solicita e retorna a próxima página
-            retorno[objectKey] = retorno[objectKey].concat(
-              novoRetorno[objectKey]
-            ); // Unificar os Arrays
+            if(novoRetorno[objectKey]){
+              retorno[objectKey] = retorno[objectKey].concat(
+              novoRetorno[objectKey]); // Unificar os Arrays
+            }
             resolve(retorno); // Retorna o array na promise
           } else if (itensLimit !== 100) {
             retorno[objectKey] = retorno[objectKey].splice(0, itensLimit);
