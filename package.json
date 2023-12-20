@@ -1,6 +1,6 @@
 {
   "name": "bling-erp.js",
-  "version": "0.2.2",
+  "version": "0.3.2",
   "description": "Biblioteca não oficial para interagir com a API do Bling ERP.",
   "main": "src/bling.js",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/leobaldoneto/bling-erp.js#readme",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.2",
     "xmlbuilder2": "^2.3.1"
   }
 }
