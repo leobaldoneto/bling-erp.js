@@ -8,24 +8,31 @@ const PedidosCompra = require('./routes/pedidos-compra');
 const Categorias = require('./routes/categorias');
 
 class Bling {
-  constructor(...args) {
+  constructor(config) {
     this.axiosInstance = new axios.create({
       baseURL: 'https://bling.com.br/Api/v2/',
       timeout: 5000,
       params: {
-        apikey: args[0].apikey,
+        apikey: config.apikey,
       },
     });
+
+    this.requestDelay = config.requestDelay || 0; // Default delay is 0 ms
 
     this.pedidos = new Pedidos(this);
     this.produtos = new Produtos(this);
     this.contatos = new Contatos(this);
     this.pedidosCompra = new PedidosCompra(this);
-    this.categorias = new Categorias(this)
+    this.categorias = new Categorias(this);
+  }
+
+  // Helper function to introduce delay
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   // Esse bloco executa a requisição ao servidor do Bling.
-  request(config, itensLimit = 100, instance = this) {
+  async request(config, itensLimit = 100, instance = this) {
     return new Promise((resolve, reject) => {
       this.axiosInstance
         .request(config)
@@ -50,6 +57,8 @@ class Bling {
             let page = url[1].split('=')[1]; // Número da página atual
             let newConfig = response.config; // Captura a configuração do request do Axios
             newConfig.url = `${url[0]}/page=${++page}/${url[2]}/`; // Prepara a url da próxima página
+
+            await instance.sleep(instance.requestDelay); // Introduce delay
 
             let novoRetorno = await instance.request(
               newConfig,

@@ -1,6 +1,6 @@
 {
   "name": "bling-erp.js",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Biblioteca não oficial para interagir com a API do Bling ERP.",
   "main": "src/bling.js",
   "scripts": {
