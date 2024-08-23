@@ -1,6 +1,8 @@
 # bling-erp.js
 Biblioteca para interagir com o Bling ERP API.
 
+Não recomendo usar essa lib, pois está na versão v2 da API do Bling, que está descontinuada.
+
 ## Recursos
 - Produtos: add, update, delete, getAll, getBySku
 - Pedidos: add, update, getAll, getByNumber
