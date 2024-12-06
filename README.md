@@ -3,6 +3,8 @@ Biblioteca para interagir com o Bling ERP API.
 
 Não recomendo usar essa lib, pois está na versão v2 da API do Bling, que está descontinuada.
 
+Outra opção de lib em typescript: https://github.com/AlexandreBellas/bling-erp-api-js?tab=readme-ov-file
+
 ## Recursos
 - Produtos: add, update, delete, getAll, getBySku
 - Pedidos: add, update, getAll, getByNumber
